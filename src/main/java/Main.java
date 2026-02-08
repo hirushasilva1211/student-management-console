@@ -8,7 +8,7 @@ public class Main {
 		boolean exit = false;
 		
 		while(!exit) {
-			// One second delay
+			// One second delay for better UX
 			try {
 				Thread.sleep(1000);
 			}catch (InterruptedException e) {
