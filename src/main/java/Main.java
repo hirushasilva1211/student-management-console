@@ -27,11 +27,11 @@ public class Main {
 				Thread.currentThread().interrupt();
 				break;
 			}
-			String input = sc.nextLine(); // always read a line
+			String input = sc.nextLine(); 
 
 		    int choice;
 		    try {
-		        choice = Integer.parseInt(input); // convert to int
+		        choice = Integer.parseInt(input); 
 		    } catch (NumberFormatException e) {
 		        System.out.println("Please Enter a Number.");
 		        continue;
