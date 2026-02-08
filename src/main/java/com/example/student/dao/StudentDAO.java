@@ -100,7 +100,7 @@ public class StudentDAO {
 		}
 	}
 	
-	// Update student email
+	// Update student email address
 	public static void updateEmail(int id, String email) {
 	    String sql = "UPDATE students SET email = ? WHERE id = ?";
 

@@ -88,7 +88,7 @@ public class ConsoleDisplay {
 		StudentDAO.addStudent(student);
 	}
 	
-	// Display selected student details on console
+	// Display selected student details
 	public void getStudentById() {
 		
 		long id;

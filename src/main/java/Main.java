@@ -16,6 +16,7 @@ public class Main {
 				break;
 			}
 			
+			// operations
 			System.out.println("\n1. Add\n2. View by Id\n3. View all\n4. Update\n5. Delete\n6. Exit\n");
 			System.out.print("Enter Your Operation = ");
 			
