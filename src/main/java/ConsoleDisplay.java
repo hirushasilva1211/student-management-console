@@ -4,6 +4,8 @@ import java.util.Scanner;
 import com.example.student.dao.StudentDAO;
 import com.example.student.model.Student;
 
+import jdk.internal.org.jline.terminal.TerminalBuilder.SystemOutput;
+
 public class ConsoleDisplay {
 	
 	private Scanner sc;
@@ -126,18 +128,156 @@ public class ConsoleDisplay {
 			if(student == null) {
 				System.out.println("Student not found.");
 				continue;
-			}		
+			}	
+			System.out.println("Id : " + student.getId());
 			System.out.println("Name : " + student.getName());
 			System.out.println("Email : " + student.getEmail());
 			System.out.println("Age : " +student.getAge() + "\n");
 		}
 	}
 	
-	//Update student
-	public void updateEmail() {
-		System.out.println("Update operation is under construction...");
+	// Display update student operation
+	public void updateDetails() {
+		System.out.println("\t1.Update Name\n\t2.Update Email\n\t3.Update Age");
+		int operationId;
+		while(true) {
+			System.out.print("\tEnter update operation: ");
+			
+			String input = sc.nextLine();
+			try {
+				operationId = Integer.parseInt(input);
+			} catch (NumberFormatException e) {
+				System.out.println("Please enter a valid digit.");
+		        continue;
+			}
+			
+			if(operationId == 1) {
+				updateName();
+				break;
+			}else if(operationId == 2) {
+				updateEmail();
+				break;
+			}else if(operationId == 3) {
+				updateAge();
+				break;
+			}
+			else {
+				System.out.println("Something Went Wrong!\nTry Again");
+				continue;
+			}
+		}
 	}
 	
+	//Display update name operation
+	public void updateName() {
+		int studentId;
+		String studentName;
+		
+		// Input student Id
+		while(true) {
+			System.out.print("Student Id: ");
+			String input = sc.nextLine();
+			try {
+				studentId = Integer.parseInt(input);
+			} catch (NumberFormatException e) {
+				System.out.println("Please enter a valid digit.");
+		        continue;
+			}
+			break;
+		}
+		
+		//Input student Name
+		while(true) {
+			System.out.print("Student Name : ");
+			String name = sc.nextLine().trim();
+			
+			if(name.isEmpty()) {
+				System.out.println("Input cannot be empty.");
+				continue;
+			}else if(!name.matches("[a-zA-Z ]+")) {
+				System.out.println("Only letters are allowed.");
+				continue;
+			}else {
+				studentName = name;
+				break;
+			}	
+		}
+		
+		StudentDAO.updateName(studentId, studentName);
+		System.out.println("Student Name Updated Successfully");
+	}
+	
+	// Display Update Email operation
+	public void updateEmail() {
+		int studentId;
+		String studentEmail;
+		
+		// Input student Id
+		while(true) {
+			System.out.print("Student Id: ");
+			String input = sc.nextLine();
+			try {
+				studentId = Integer.parseInt(input);
+			} catch (NumberFormatException e) {
+				System.out.println("Please enter a valid digit.");
+		        continue;
+			}
+			break;
+		}
+		
+		//Input student Email
+		while(true) {
+			System.out.print("Student Email : ");
+			String email = sc.nextLine().trim();
+			
+			if(email.isEmpty()) {
+				System.out.println("Input cannot be empty.");
+				continue;
+			}else {
+				studentEmail = email;
+				break;
+			}	
+		}
+		
+		StudentDAO.updateEmail(studentId, studentEmail);
+		System.out.println("Student Email Updated Successfully");
+	}
+
+	// Display Update Age operation
+	public void updateAge() {
+		int studentId;
+		int studentAge;
+		
+		// Input student Id
+		while(true) {
+			System.out.print("Student Id: ");
+			String input = sc.nextLine();
+			try {
+				studentId = Integer.parseInt(input);
+			} catch (NumberFormatException e) {
+				System.out.println("Please enter a valid digit.");
+		        continue;
+			}
+			break;
+		}
+		
+		//Input student Age
+		while(true) {
+			System.out.print("Student Age: ");
+			String input = sc.nextLine();
+			try {
+				studentAge = Integer.parseInt(input);
+			} catch (NumberFormatException e) {
+				System.out.println("Please enter a valid age.");
+		        continue;
+			}
+			break;
+		}
+		
+		StudentDAO.updateAge(studentId, studentAge);
+		System.out.println("Student Age Updated Successfully");
+	}
+
 	// Display delete operation by id
 	public void deleteStudent() {
 		

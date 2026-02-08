@@ -85,6 +85,21 @@ public class StudentDAO {
 		return studentList;
 	}
 	
+	// Update student name
+	public static void updateName(int id, String name) {
+	    String sql = "UPDATE students SET name = ? WHERE id = ?";
+
+	    try (Connection con = JDBCUtil.getConnection();
+	         PreparedStatement ps = con.prepareStatement(sql)) {
+
+	        ps.setString(1, name);
+	        ps.setInt(2, id);
+	        ps.executeUpdate();
+	    }catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	// Update student email
 	public static void updateEmail(int id, String email) {
 	    String sql = "UPDATE students SET email = ? WHERE id = ?";
@@ -99,6 +114,22 @@ public class StudentDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	// Update student age
+	public static void updateAge(int id, int age) {
+	    String sql = "UPDATE students SET age = ? WHERE id = ?";
+
+	    try (Connection con = JDBCUtil.getConnection();
+	         PreparedStatement ps = con.prepareStatement(sql)) {
+
+	        ps.setInt(1, age);
+	        ps.setInt(2, id);
+	        ps.executeUpdate();
+	    }catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+		
 
 	// Delete student by id
 	public static void deleteStudent(long id) {

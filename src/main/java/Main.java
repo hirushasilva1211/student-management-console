@@ -47,7 +47,7 @@ public class Main {
 					consoleDisplay.getAllStudents();
 					break;
 				case 4:
-					consoleDisplay.updateEmail();
+					consoleDisplay.updateDetails();
 					break;
 				case 5:
 					consoleDisplay.deleteStudent();
